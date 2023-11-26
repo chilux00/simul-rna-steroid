@@ -13,9 +13,20 @@ pilot2_data
 # Removing NA values
 pilot2_data_cleaned <- pilot2_data %>% drop_na(area)
 
-pilot2_bar <- pilot2_data %>%
-  ggplot(aes(x = buffer),
-         color = reagent) +
-  geom_bar(stat = identity) 
+pilot2_bar <- pilot2_data_cleaned %>%
+  ggplot(aes(x = buffer, 
+             y = area,
+             fill = reagent)) +
+  geom_bar(stat = "identity",
+           position = "dodge",
+           na.rm = TRUE) +
+  
+  labs(title = "Pilot 2: Dichloromethane and Ethyl Acetate extraction of
+       steroids from Qiagen, Monarch and Zymo RNA Lysis Buffers",
+       x = "Buffer Kit",
+       y = "Area") +
+  
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5, size = 12))  
 
 pilot2_bar  
