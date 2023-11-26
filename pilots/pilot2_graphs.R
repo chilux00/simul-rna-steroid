@@ -7,13 +7,14 @@ library(ggplot2)
 library(cowplot)
 
 # Initial read of csv data from Multiquant
-pilot2_data <- read.csv("data/sep27data_DCMEA3buffer.csv", na.rm = TRUE)
+pilot2_data <- read.csv("data/sep27data_DCMEA3buffer.csv")
 pilot2_data
 
 # Removing NA values
 pilot2_data_cleaned <- pilot2_data %>%
-  drop_na(area) %>%
-  as.data.frame(complete.cases(pilot2_data$area))
+  mutate(area = as.numeric(area)) %>% 
+  mutate(reagent = as.factor(reagent)) %>%
+  as.data.frame()
 
 pilot2_data_cleaned
 
@@ -35,3 +36,12 @@ pilot2_bar <- pilot2_data_cleaned %>%
   theme(plot.title = element_text(hjust = 0.5, size = 12))  
 
 pilot2_bar  
+
+
+pilot2_averaged <- pilot2_data %>%
+  group_by(buffer, reagent) %>%
+  summarize(area_avg = mean(area))
+
+pilot2_averaged
+
+  
