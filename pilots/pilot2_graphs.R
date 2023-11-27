@@ -5,12 +5,13 @@
 library(tidyverse)
 library(ggplot2)
 library(cowplot)
+library(forcats)
 
 # Initial read of csv data from Multiquant
 pilot2_data <- read.csv("data/sep27data_DCMEA3buffer.csv")
 pilot2_data
 
-# Removing NA values
+# Cleaning data types
 pilot2_data_cleaned <- pilot2_data %>%
   mutate(area = as.numeric(area)) %>% 
   mutate(reagent = as.factor(reagent)) %>%
@@ -18,8 +19,9 @@ pilot2_data_cleaned <- pilot2_data %>%
 
 pilot2_data_cleaned
 
+# Plotting bar graph of pilot 2 area data per treatment
 pilot2_bar <- pilot2_data_cleaned %>%
-  ggplot(aes(x = buffer, 
+  ggplot(aes(x = fct_inorder(buffer), 
              y = area,
              fill = reagent)) +
   geom_bar(stat = "identity",
@@ -37,11 +39,32 @@ pilot2_bar <- pilot2_data_cleaned %>%
 
 pilot2_bar  
 
+### -------------------------------------------------------------------------
+# Initial read of averaged area data values, calculated from initial MQ data
+pilot2_avgdata <- read.csv("data/sep27data_DCMEA3buffer_averaged.csv")
 
-pilot2_averaged <- pilot2_data %>%
-  group_by(buffer, reagent) %>%
-  summarize(area_avg = mean(area))
+# Cleaning data types
+pilot2_avgdata_cleaned <- pilot2_avgdata %>%
+  mutate(avg_area = as.numeric(avg_area)) %>% 
+  mutate(reagent = as.factor(reagent)) %>%
+  as.data.frame()
 
-pilot2_averaged
+# Replace NA values with 0 in avg_area
+data <- data %>% mutate(avg_area = coalesce(avg_area, 0))
 
-  
+pilot2_avgdata_cleaned
+
+# Plotting line graph of pilot 2 data average area per treatment
+pilot2_line <- pilot2_avgdata_cleaned %>%
+  ggplot(aes(x = fct_inorder(buffer), 
+             y = avg_area, 
+             group = reagent, 
+             color = reagent)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "Average Area by Buffer Treatment and Reagent",
+       x = "Buffer Treatment",
+       y = "Average Area") +
+  theme_minimal()
+
+pilot2_line
