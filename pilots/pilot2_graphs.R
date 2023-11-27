@@ -6,6 +6,7 @@ library(tidyverse)
 library(ggplot2)
 library(cowplot)
 library(forcats)
+library(dplyr)
 
 # Initial read of csv data from Multiquant
 pilot2_data <- read.csv("data/sep27data_DCMEA3buffer.csv")
@@ -25,7 +26,7 @@ pilot2_data_cleaned <- pilot2_data %>%
 pilot2_data_cleaned
 
 # Plotting bar graph of pilot 2 area data per treatment
-# P4 graph
+# P4 Progesterone graph
 pilot2_bar <- pilot2_data_cleaned %>%
   ggplot(aes(x = fct_inorder(buffer), 
              y = (area_p4),
@@ -59,24 +60,53 @@ pilot2_avgdata <- read.csv("data/sep27data_DCMEA3buffer_averaged.csv")
 
 # Cleaning data types
 pilot2_avgdata_cleaned <- pilot2_avgdata %>%
-  mutate(avg_area = as.numeric(avg_area)) %>% 
+  mutate(avg_p4 = as.numeric(avg_p4)) %>% 
+  mutate(avg_f = as.numeric(avg_f)) %>% 
+  mutate(avg_b = as.numeric(avg_b)) %>% 
   mutate(reagent = as.factor(reagent)) %>%
-  mutate(avg_area = coalesce(avg_area, 0)) %>%  # Removal of NA values - keep?
-  as.data.frame() 
+  mutate(avg_p4 = coalesce(avg_p4, 0)) %>%  # Removal of NA values - keep?
+  mutate(avg_f = coalesce(avg_f, 0)) %>% 
+  mutate(avg_b = coalesce(avg_b, 0)) %>% 
+  as.data.frame()
 
 pilot2_avgdata_cleaned
 
+# Create a new grouping variable
+pilot2_avgdata_control <- pilot2_avgdata_cleaned %>%
+  filter(buffer == "CONTROL")
+
+pilot2_avgdata_control
+
 # Plotting line graph of pilot 2 data average area per treatment
-pilot2_line <- pilot2_avgdata_cleaned %>%
-  ggplot(aes(x = fct_inorder(buffer), 
-             y = avg_area, 
-             group = reagent, 
-             color = reagent)) +
-  geom_line() +
-  geom_point() +
-  labs(title = "Average Area by Buffer Treatment and Reagent",
-       x = "Buffer Treatment",
+# P4 Progesterone Graph
+pilot2_line <- ggplot() +
+  geom_line(data = pilot2_avgdata_cleaned,
+            aes(x = fct_inorder(buffer), 
+                y = avg_p4, 
+                group = reagent, 
+                color = reagent)
+            ) +
+  geom_point(data = pilot2_avgdata_cleaned,
+             aes(x = fct_inorder(buffer), 
+                 y = avg_p4, 
+                 group = reagent, 
+                 color = reagent)
+             ) +
+  geom_bar(data = pilot2_avgdata_control,
+           aes(x = buffer,
+               y = avg_p4),
+           stat = "identity",
+           position = "dodge",
+           fill = "light blue",
+           width = 0.7,
+           na.rm = TRUE
+           ) +
+  labs(title = "Pilot 2: Dichloromethane and Ethyl Acetate extraction of 
+       Progesterone (P4) Steroid Hormone from Qiagen, Monarch and Zymo
+       RNA Lysis Buffers, averaged across treatments",
+       x = "Buffer Kit",
        y = "Average Area") +
-  theme_minimal()
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5, size = 10))
 
 pilot2_line
