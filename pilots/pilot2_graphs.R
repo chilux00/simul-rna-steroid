@@ -149,7 +149,7 @@ pilot2_line_p4 <- ggplot() +
                  group = reagent, 
                  color = reagent)
              ) +
-  geom_bar(data = pilot2_avgdata_control,
+  geom_bar(data = pilot2_avgdata_control, # Plots control group as a bar
            aes(x = buffer,
                y = avg_p4),
            stat = "identity",
@@ -182,7 +182,7 @@ pilot2_line_b <- ggplot() +
                  group = reagent, 
                  color = reagent)
   ) +
-  geom_bar(data = pilot2_avgdata_control,
+  geom_bar(data = pilot2_avgdata_control, # Plots control group as a bar
            aes(x = buffer,
                y = avg_b),
            stat = "identity",
@@ -215,7 +215,7 @@ pilot2_line_f <- ggplot() +
                  group = reagent, 
                  color = reagent)
   ) +
-  geom_bar(data = pilot2_avgdata_control,
+  geom_bar(data = pilot2_avgdata_control, # Plots control group as a bar
            aes(x = buffer,
                y = avg_f),
            stat = "identity",
