@@ -15,6 +15,7 @@ pilot2_data
 pilot2_data_cleaned <- pilot2_data %>%
   mutate(area = as.numeric(area)) %>% 
   mutate(reagent = as.factor(reagent)) %>%
+  mutate(avg_area = coalesce(avg_area, 0)) %>%  # Removal of NA values - keep?
   as.data.frame()
 
 pilot2_data_cleaned
@@ -47,10 +48,8 @@ pilot2_avgdata <- read.csv("data/sep27data_DCMEA3buffer_averaged.csv")
 pilot2_avgdata_cleaned <- pilot2_avgdata %>%
   mutate(avg_area = as.numeric(avg_area)) %>% 
   mutate(reagent = as.factor(reagent)) %>%
-  as.data.frame()
-
-# Replace NA values with 0 in avg_area
-data <- data %>% mutate(avg_area = coalesce(avg_area, 0))
+  mutate(avg_area = coalesce(avg_area, 0)) %>%  # Removal of NA values - keep?
+  as.data.frame() 
 
 pilot2_avgdata_cleaned
 
