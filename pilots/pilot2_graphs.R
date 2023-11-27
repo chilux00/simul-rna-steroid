@@ -14,8 +14,12 @@ pilot2_data
 # Cleaning data types
 pilot2_data_cleaned <- pilot2_data %>%
   mutate(area_p4 = as.numeric(area_p4)) %>% 
+  mutate(area_f = as.numeric(area_f)) %>% 
+  mutate(area_b = as.numeric(area_b)) %>% 
   mutate(reagent = as.factor(reagent)) %>%
-  mutate(avg_area_p4 = coalesce(area_p4, 0)) %>%  # Removal of NA values - keep?
+  mutate(area_p4 = coalesce(area_p4, 0)) %>%  # Removal of NA values - keep?
+  mutate(area_f = coalesce(area_f, 0)) %>% 
+  mutate(area_b = coalesce(area_b, 0)) %>% 
   as.data.frame()
 
 pilot2_data_cleaned
@@ -24,20 +28,28 @@ pilot2_data_cleaned
 # P4 graph
 pilot2_bar <- pilot2_data_cleaned %>%
   ggplot(aes(x = fct_inorder(buffer), 
-             y = area_p4,
-             fill = reagent)) +
+             y = (area_p4),
+             fill = as.factor(reagent)
+             )
+         ) +
   geom_bar(stat = "identity",
            position = "dodge",
-           na.rm = TRUE) +
-  
+           width = 0.7,
+           na.rm = TRUE
+           ) +
+
   labs(title = "Pilot 2: Dichloromethane and Ethyl Acetate extraction of
-       steroids from Qiagen, Monarch and Zymo RNA Lysis Buffers",
+       Progesterone (P4) Steroid Hormone from Qiagen, Monarch and Zymo RNA 
+       Lysis Buffers",
        x = "Buffer Kit",
-       y = "Area"
+       y = "Area",
+       fill = "Reagent"
        ) +
   
   theme_minimal() +
-  theme(plot.title = element_text(hjust = 0.5, size = 12))  
+  theme(plot.title = element_text(hjust = 0.5, size = 10),
+        axis.text.x = element_text(angle = 80, hjust = 1)
+        )  
 
 pilot2_bar  
 
