@@ -13,17 +13,18 @@ pilot2_data
 
 # Cleaning data types
 pilot2_data_cleaned <- pilot2_data %>%
-  mutate(area = as.numeric(area)) %>% 
+  mutate(area_p4 = as.numeric(area_p4)) %>% 
   mutate(reagent = as.factor(reagent)) %>%
-  mutate(avg_area = coalesce(avg_area, 0)) %>%  # Removal of NA values - keep?
+  mutate(avg_area_p4 = coalesce(area_p4, 0)) %>%  # Removal of NA values - keep?
   as.data.frame()
 
 pilot2_data_cleaned
 
 # Plotting bar graph of pilot 2 area data per treatment
+# P4 graph
 pilot2_bar <- pilot2_data_cleaned %>%
   ggplot(aes(x = fct_inorder(buffer), 
-             y = area,
+             y = area_p4,
              fill = reagent)) +
   geom_bar(stat = "identity",
            position = "dodge",
