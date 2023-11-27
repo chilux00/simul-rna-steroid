@@ -51,3 +51,57 @@ pilot1_bar_p4 <- pilot1_data_cleaned %>%
   )  
 
 pilot1_bar_p4
+
+# B Corticosterone graph
+pilot1_bar_b <- pilot1_data_cleaned %>%
+  ggplot(aes(x = fct_inorder(reagent), 
+             y = (area_b),
+             fill = as.factor(reagent)
+  )
+  ) +
+  geom_bar(stat = "identity",
+           position = "dodge",
+           width = 0.7,
+           na.rm = TRUE
+  ) +
+  
+  labs(title = "Pilot 1: Dichloromethane and Ethyl Acetate extraction of
+       Corticosterone (B) Steroid Hormone from Qiagen RNA Kit Flowthrough",
+       x = "Buffer Kit",
+       y = "Area",
+       fill = "Reagent"
+  ) +
+  
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5, size = 10)
+  )  
+
+pilot1_bar_b
+
+# F Cortisol graph
+pilot1_bar_f <- pilot1_data_cleaned %>%
+  ggplot(aes(x = fct_inorder(reagent), 
+             y = (area_f),
+             fill = as.factor(reagent)
+  )
+  ) +
+  geom_bar(stat = "identity",
+           position = "dodge",
+           width = 0.7,
+           na.rm = TRUE
+  ) +
+  
+  labs(title = "Pilot 1: Dichloromethane and Ethyl Acetate extraction of
+       Cortisol (F) Steroid Hormone from Qiagen RNA Kit Flowthrough",
+       x = "Buffer Kit",
+       y = "Area",
+       fill = "Reagent"
+  ) +
+  
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5, size = 10)
+  )  
+
+pilot1_bar_f
+
+
