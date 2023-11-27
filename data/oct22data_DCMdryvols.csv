@@ -1,4 +1,4 @@
-﻿sample,reagent,volume,time,dilution,area (p4),area f,area b
+﻿sample,reagent,volume,time,dilution,area_p4,area_f,area_b
 1,DCM1,2,1,yes,N/A,N/A,N/A
 2,DCM2,2,1,yes,N/A,N/A,N/A
 3,DCM3,2,1,yes,N/A,N/A,N/A
