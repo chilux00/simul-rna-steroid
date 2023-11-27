@@ -27,7 +27,7 @@ pilot2_data_cleaned
 
 # Plotting bar graph of pilot 2 area data per treatment
 # P4 Progesterone graph
-pilot2_bar <- pilot2_data_cleaned %>%
+pilot2_bar_p4 <- pilot2_data_cleaned %>%
   ggplot(aes(x = fct_inorder(buffer), 
              y = (area_p4),
              fill = as.factor(reagent)
@@ -52,7 +52,64 @@ pilot2_bar <- pilot2_data_cleaned %>%
         axis.text.x = element_text(angle = 80, hjust = 1)
         )  
 
-pilot2_bar  
+pilot2_bar_p4
+
+# B Corticosterone graph
+pilot2_bar_b <- pilot2_data_cleaned %>%
+  ggplot(aes(x = fct_inorder(buffer), 
+             y = (area_b),
+             fill = as.factor(reagent)
+  )
+  ) +
+  geom_bar(stat = "identity",
+           position = "dodge",
+           width = 0.7,
+           na.rm = TRUE
+  ) +
+  
+  labs(title = "Pilot 2: Dichloromethane and Ethyl Acetate extraction of
+       Corticosterone (B) Steroid Hormone from Qiagen, Monarch and Zymo RNA 
+       Lysis Buffers",
+       x = "Buffer Kit",
+       y = "Area",
+       fill = "Reagent"
+  ) +
+  
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5, size = 10),
+        axis.text.x = element_text(angle = 80, hjust = 1)
+  )  
+
+pilot2_bar_b
+
+# F Cortisol graph
+pilot2_bar_f <- pilot2_data_cleaned %>%
+  ggplot(aes(x = fct_inorder(buffer), 
+             y = (area_f),
+             fill = as.factor(reagent)
+  )
+  ) +
+  geom_bar(stat = "identity",
+           position = "dodge",
+           width = 0.7,
+           na.rm = TRUE
+  ) +
+  
+  labs(title = "Pilot 2: Dichloromethane and Ethyl Acetate extraction of
+       Cortisol (F) Steroid Hormone from Qiagen, Monarch and Zymo RNA 
+       Lysis Buffers",
+       x = "Buffer Kit",
+       y = "Area",
+       fill = "Reagent"
+  ) +
+  
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5, size = 10),
+        axis.text.x = element_text(angle = 80, hjust = 1)
+  )  
+
+pilot2_bar_f
+
 
 ### -------------------------------------------------------------------------
 # Initial read of averaged area data values, calculated from initial MQ data
@@ -79,7 +136,7 @@ pilot2_avgdata_control
 
 # Plotting line graph of pilot 2 data average area per treatment
 # P4 Progesterone Graph
-pilot2_line <- ggplot() +
+pilot2_line_p4 <- ggplot() +
   geom_line(data = pilot2_avgdata_cleaned,
             aes(x = fct_inorder(buffer), 
                 y = avg_p4, 
@@ -109,4 +166,70 @@ pilot2_line <- ggplot() +
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5, size = 10))
 
-pilot2_line
+pilot2_line_p4
+
+# B Corticosterone graph
+pilot2_line_b <- ggplot() +
+  geom_line(data = pilot2_avgdata_cleaned,
+            aes(x = fct_inorder(buffer), 
+                y = avg_b, 
+                group = reagent, 
+                color = reagent)
+  ) +
+  geom_point(data = pilot2_avgdata_cleaned,
+             aes(x = fct_inorder(buffer), 
+                 y = avg_b, 
+                 group = reagent, 
+                 color = reagent)
+  ) +
+  geom_bar(data = pilot2_avgdata_control,
+           aes(x = buffer,
+               y = avg_b),
+           stat = "identity",
+           position = "dodge",
+           fill = "light blue",
+           width = 0.7,
+           na.rm = TRUE
+  ) +
+  labs(title = "Pilot 2: Dichloromethane and Ethyl Acetate extraction of 
+       Corticosterone (B) Steroid Hormone from Qiagen, Monarch and Zymo
+       RNA Lysis Buffers, averaged across treatments",
+       x = "Buffer Kit",
+       y = "Average Area") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5, size = 10))
+
+pilot2_line_b
+
+# F Cortisol graph
+pilot2_line_f <- ggplot() +
+  geom_line(data = pilot2_avgdata_cleaned,
+            aes(x = fct_inorder(buffer), 
+                y = avg_f, 
+                group = reagent, 
+                color = reagent)
+  ) +
+  geom_point(data = pilot2_avgdata_cleaned,
+             aes(x = fct_inorder(buffer), 
+                 y = avg_f, 
+                 group = reagent, 
+                 color = reagent)
+  ) +
+  geom_bar(data = pilot2_avgdata_control,
+           aes(x = buffer,
+               y = avg_f),
+           stat = "identity",
+           position = "dodge",
+           fill = "light blue",
+           width = 0.7,
+           na.rm = TRUE
+  ) +
+  labs(title = "Pilot 2: Dichloromethane and Ethyl Acetate extraction of 
+       Cortisol (F) Steroid Hormone from Qiagen, Monarch and Zymo
+       RNA Lysis Buffers, averaged across treatments",
+       x = "Buffer Kit",
+       y = "Average Area") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5, size = 10))
+
+pilot2_line_f
