@@ -104,4 +104,3 @@ pilot1_bar_f <- pilot1_data_cleaned %>%
 
 pilot1_bar_f
 
-
