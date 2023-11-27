@@ -47,7 +47,7 @@ pilot3_bar_p4 <- pilot3_data_cleaned %>%
        differing reagent volumes, buffer dilution and dry times",
        x = "Buffer Kit",
        y = "Area",
-       fill = "Time"
+       fill = "Time (hours)"
   ) +
   
   theme_minimal() +

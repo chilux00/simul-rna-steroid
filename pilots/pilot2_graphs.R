@@ -94,6 +94,7 @@ pilot2_bar_f <- pilot2_data_cleaned %>%
            width = 0.7,
            na.rm = TRUE
   ) +
+#  scale_y_log10() + can transform the y axis to be log - avoid E notation
   
   labs(title = "Pilot 2: Dichloromethane and Ethyl Acetate extraction of
        Cortisol (F) Steroid Hormone from Qiagen, Monarch and Zymo RNA 
