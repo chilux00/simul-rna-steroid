@@ -57,7 +57,7 @@ pilot1_bar_b <- pilot1_data_cleaned %>%
   ggplot(aes(x = fct_inorder(reagent), 
              y = (area_b),
              fill = as.factor(reagent)
-  )
+             )
   ) +
   geom_bar(stat = "identity",
            position = "dodge",
