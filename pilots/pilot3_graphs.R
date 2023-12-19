@@ -129,10 +129,11 @@ pilot3_bar_f <-
   ) +
   geom_jitter(data = pilot3indiv_cleaned,
               aes(x = fct_inorder(reagent),
-                  y = area_f),
+                  y = area_f,
+                  fill = volume),
               stat = "identity",
-              position = position_jitter(height = 0,
-                                         width = 0)) +
+              position = position_jitterdodge(),
+              na.rm = TRUE) +
   
   labs(title = "Pilot 3: Dichloromethane extraction of
        Cortisol (F) Steroid Hormone from Qiagen RNA Kit Flowthrough with 
