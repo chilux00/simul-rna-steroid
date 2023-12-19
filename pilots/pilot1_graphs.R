@@ -27,17 +27,23 @@ pilot1_data_cleaned
 
 # Plotting bar graph of pilot 1 area data per treatment
 # P4 Progesterone graph
-pilot1_bar_p4 <- pilot1_data_cleaned %>%
-  ggplot(aes(x = fct_inorder(reagent), 
-             y = (area_p4),
-             fill = as.factor(reagent)
-  )
-  ) +
-  geom_bar(stat = "identity",
+pilot1_bar_p4 <- 
+  ggplot() + 
+  geom_bar(data = pilot1_data_cleaned,
+           aes(x = fct_inorder(reagent), 
+               y = (area_p4),
+               fill = as.factor(reagent)),
+           stat = "identity",
            position = "dodge",
            width = 0.7,
            na.rm = TRUE
   ) +
+  geom_jitter(data = pilot1_data_cleaned,
+              aes(x = reagent,
+                  y = area_p4),
+              stat = "identity",
+              position = position_jitter(height = 0,
+                                         width = 0)) +
   
   labs(title = "Pilot 1: Dichloromethane and Ethyl Acetate extraction of
        Progesterone (P4) Steroid Hormone from Qiagen RNA Kit Flowthrough",
@@ -53,17 +59,23 @@ pilot1_bar_p4 <- pilot1_data_cleaned %>%
 pilot1_bar_p4
 
 # B Corticosterone graph
-pilot1_bar_b <- pilot1_data_cleaned %>%
-  ggplot(aes(x = fct_inorder(reagent), 
-             y = (area_b),
-             fill = as.factor(reagent)
-             )
-  ) +
-  geom_bar(stat = "identity",
+pilot1_bar_b <- 
+  ggplot() + 
+  geom_bar(data = pilot1_data_cleaned,
+           aes(x = fct_inorder(reagent), 
+               y = (area_b),
+               fill = as.factor(reagent)),
+           stat = "identity",
            position = "dodge",
            width = 0.7,
            na.rm = TRUE
   ) +
+  geom_jitter(data = pilot1_data_cleaned,
+              aes(x = reagent,
+                  y = area_b),
+              stat = "identity",
+              position = position_jitter(height = 0,
+                                         width = 0)) +
   
   labs(title = "Pilot 1: Dichloromethane and Ethyl Acetate extraction of
        Corticosterone (B) Steroid Hormone from Qiagen RNA Kit Flowthrough",
@@ -79,17 +91,23 @@ pilot1_bar_b <- pilot1_data_cleaned %>%
 pilot1_bar_b
 
 # F Cortisol graph
-pilot1_bar_f <- pilot1_data_cleaned %>%
-  ggplot(aes(x = fct_inorder(reagent), 
-             y = (area_f),
-             fill = as.factor(reagent)
-  )
-  ) +
-  geom_bar(stat = "identity",
+pilot1_bar_f <- 
+  ggplot() + 
+  geom_bar(data = pilot1_data_cleaned,
+           aes(x = fct_inorder(reagent), 
+               y = (area_f),
+               fill = as.factor(reagent)),
+           stat = "identity",
            position = "dodge",
            width = 0.7,
            na.rm = TRUE
   ) +
+  geom_jitter(data = pilot1_data_cleaned,
+              aes(x = reagent,
+                  y = area_f),
+              stat = "identity",
+              position = position_jitter(height = 0,
+                                         width = 0)) +
   
   labs(title = "Pilot 1: Dichloromethane and Ethyl Acetate extraction of
        Cortisol (F) Steroid Hormone from Qiagen RNA Kit Flowthrough",

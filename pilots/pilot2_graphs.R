@@ -57,7 +57,7 @@ pilot2_bar_p4 <-
              stat = "identity",
              position = position_jitter(height = 0,
                                         width = 0)) +
-
+  
   labs(title = "Pilot 2: Dichloromethane and Ethyl Acetate extraction of
        Progesterone (P4) Steroid Hormone from Qiagen, Monarch and Zymo RNA 
        Lysis Buffers",
@@ -74,16 +74,23 @@ pilot2_bar_p4 <-
 pilot2_bar_p4
 
 # B Corticosterone graph
-pilot2_bar_b <- pilot2_data_cleaned %>%
-  ggplot(aes(x = fct_inorder(buffer), 
-             y = (avg_b),
-             fill = as.factor(reagent))
-  ) +
-  geom_bar(stat = "identity",
+pilot2_bar_b <- 
+  ggplot() +
+  geom_bar(data = pilot2_data_cleaned,
+           aes(x = fct_inorder(buffer),
+               y = avg_b,
+               fill = reagent),
+           stat = "identity",
            position = "dodge",
            width = 0.7,
-           na.rm = TRUE
+           na.rm = TRUE,
   ) +
+  geom_jitter(data = pilot2indiv_cleaned,
+              aes(x = buffer,
+                  y = area_b),
+              stat = "identity",
+              position = position_jitter(height = 0,
+                                         width = 0)) +
   
   labs(title = "Pilot 2: Dichloromethane and Ethyl Acetate extraction of
        Corticosterone (B) Steroid Hormone from Qiagen, Monarch and Zymo RNA 
@@ -101,18 +108,23 @@ pilot2_bar_b <- pilot2_data_cleaned %>%
 pilot2_bar_b
 
 # F Cortisol graph
-pilot2_bar_f <- pilot2_data_cleaned %>%
-  ggplot(aes(x = fct_inorder(buffer), 
-             y = (avg_f),
-             fill = as.factor(reagent)
-  )
-  ) +
-  geom_bar(stat = "identity",
+pilot2_bar_f <- 
+  ggplot() +
+  geom_bar(data = pilot2_data_cleaned,
+           aes(x = fct_inorder(buffer),
+               y = avg_f,
+               fill = reagent),
+           stat = "identity",
            position = "dodge",
            width = 0.7,
-           na.rm = TRUE
+           na.rm = TRUE,
   ) +
-#  scale_y_log10() + can transform the y axis to be log - avoid E notation
+  geom_jitter(data = pilot2indiv_cleaned,
+              aes(x = buffer,
+                  y = area_f),
+              stat = "identity",
+              position = position_jitter(height = 0,
+                                         width = 0)) +
   
   labs(title = "Pilot 2: Dichloromethane and Ethyl Acetate extraction of
        Cortisol (F) Steroid Hormone from Qiagen, Monarch and Zymo RNA 
@@ -168,15 +180,7 @@ pilot2_line_p4 <- ggplot() +
                  group = reagent, 
                  color = reagent)
              ) +
-  geom_bar(data = pilot2_avgdata_control, # Plots control group as a bar
-           aes(x = buffer,
-               y = avg_p4),
-           stat = "identity",
-           position = "dodge",
-           fill = "light blue",
-           width = 0.7,
-           na.rm = TRUE
-           ) +
+ 
   labs(title = "Pilot 2: Dichloromethane and Ethyl Acetate extraction of 
        Progesterone (P4) Steroid Hormone from Qiagen, Monarch and Zymo
        RNA Lysis Buffers, averaged across treatments",
