@@ -53,10 +53,10 @@ pilot2_bar_p4 <-
            ) +
   geom_jitter(data = pilot2indiv_cleaned,
              aes(x = fct_inorder(buffer),
-                 y = area_p4),
+                 y = area_p4,
+                 fill = reagent),
              stat = "identity",
-             position = position_jitter(height = 0,
-                                        width = 0)) +
+             position = position_jitterdodge()) +
   
   labs(title = "Pilot 2: Dichloromethane and Ethyl Acetate extraction of
        Progesterone (P4) Steroid Hormone from Qiagen, Monarch and Zymo RNA 
@@ -87,10 +87,10 @@ pilot2_bar_b <-
   ) +
   geom_jitter(data = pilot2indiv_cleaned,
               aes(x = buffer,
-                  y = area_b),
+                  y = area_b,
+                  fill = reagent),
               stat = "identity",
-              position = position_jitter(height = 0,
-                                         width = 0)) +
+              position = position_jitterdodge()) +
   
   labs(title = "Pilot 2: Dichloromethane and Ethyl Acetate extraction of
        Corticosterone (B) Steroid Hormone from Qiagen, Monarch and Zymo RNA 
@@ -121,10 +121,10 @@ pilot2_bar_f <-
   ) +
   geom_jitter(data = pilot2indiv_cleaned,
               aes(x = buffer,
-                  y = area_f),
+                  y = area_f,
+                  fill = reagent),
               stat = "identity",
-              position = position_jitter(height = 0,
-                                         width = 0)) +
+              position = position_jitterdodge()) +
   
   labs(title = "Pilot 2: Dichloromethane and Ethyl Acetate extraction of
        Cortisol (F) Steroid Hormone from Qiagen, Monarch and Zymo RNA 
