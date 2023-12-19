@@ -47,7 +47,7 @@ pilot3indiv_cleaned <- pilot3_indiv %>%
 pilot3indiv_cleaned
 
 # Plotting bar graph of pilot 1 area data per treatment
-# P4 Progesterone graph
+# P4 Progesterone graph - change fill as desired for dilution, time, volume
 pilot3_bar_p4 <- 
   ggplot() +
   geom_bar(data = pilot3_data_cleaned,
