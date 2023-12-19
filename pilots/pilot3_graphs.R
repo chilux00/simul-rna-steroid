@@ -33,7 +33,7 @@ pilot3_data_cleaned
 pilot3_bar_p4 <- pilot3_data_cleaned %>%
   ggplot(aes(x = fct_inorder(reagent), 
              y = (area_p4),
-             fill = as.factor(time)
+             fill = as.factor(volume)
              )
   ) +
   geom_bar(stat = "identity",
