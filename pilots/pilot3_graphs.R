@@ -58,16 +58,16 @@ pilot3_bar_p4 <-
   ) +
   geom_jitter(data = pilot3indiv_cleaned,
               aes(x = fct_inorder(reagent),
-                  y = area_p4),
+                  y = area_p4,
+                  fill = dilution),
               stat = "identity",
-              position = position_jitter(height = 0,
-                                         width = 0)) +
+              position = position_jitterdodge()) +
   
   labs(title = "Pilot 3: Dichloromethane extraction of
        Progesterone (P4) Steroid Hormone from Qiagen RNA Kit Flowthrough with 
        differing reagent volumes, buffer dilution and dry times",
-       x = "Buffer Kit",
        y = "Area",
+       x = "",
        fill = "Dilution"
   ) +
   
@@ -78,7 +78,7 @@ pilot3_bar_p4 <-
 
 pilot3_bar_p4
 
-# B Corticosterone Plot
+# B Corticosterone Plot - change fill as desired for dilution, time, volume
 pilot3_bar_b <- 
   ggplot() +
   geom_bar(data = pilot3_data_cleaned,
@@ -92,16 +92,16 @@ pilot3_bar_b <-
   ) +
   geom_jitter(data = pilot3indiv_cleaned,
               aes(x = fct_inorder(reagent),
-                  y = area_b),
+                  y = area_b,
+                  fill = dilution),
               stat = "identity",
-              position = position_jitter(height = 0,
-                                         width = 0)) +
+              position = position_jitterdodge()) +
   
   labs(title = "Pilot 3: Dichloromethane extraction of
        Corticosterone (B) Steroid Hormone from Qiagen RNA Kit Flowthrough with 
        differing reagent volumes, buffer dilution and dry times",
-       x = "Buffer Kit",
        y = "Area",
+       x = "",
        fill = "Dilution"
   ) +
   
@@ -112,13 +112,13 @@ pilot3_bar_b <-
 
 pilot3_bar_b
 
-# F Cortisol Plot
+# F Cortisol Plot - change fill as desired for dilution, time, volume
 pilot3_bar_f <- 
   ggplot() +
   geom_bar(data = pilot3_data_cleaned,
            aes(x = fct_inorder(reagent),
                y = avg_f,
-               fill = volume),
+               fill = dilution),
            stat = "identity",
            position = "dodge",
            width = 0.7,
@@ -127,7 +127,7 @@ pilot3_bar_f <-
   geom_jitter(data = pilot3indiv_cleaned,
               aes(x = fct_inorder(reagent),
                   y = area_f,
-                  fill = volume),
+                  fill = dilution),
               stat = "identity",
               position = position_jitterdodge(),
               na.rm = TRUE) +
@@ -135,9 +135,9 @@ pilot3_bar_f <-
   labs(title = "Pilot 3: Dichloromethane extraction of
        Cortisol (F) Steroid Hormone from Qiagen RNA Kit Flowthrough with 
        differing reagent volumes, buffer dilution and dry times",
-       x = "Buffer Kit",
+       x = "",
        y = "Area",
-       fill = "Volume (mL))"
+       fill = "Dilution"
   ) +
   
   theme_minimal() +
