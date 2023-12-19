@@ -24,9 +24,6 @@ pilot3_data_cleaned <- pilot3_data %>%
   mutate(avg_p4 = coalesce(avg_p4, 0)) %>%  # Removal of NA values - keep?
   mutate(avg_f = coalesce(avg_f, 0)) %>% 
   mutate(avg_b = coalesce(avg_b, 0)) %>% 
-  mutate(volume = coalesce(volume, 0)) %>% 
-  mutate(time = coalesce(time, 0)) %>% 
-  mutate(dilution = coalesce(dilution, 0)) %>% 
   as.data.frame()
 
 pilot3_data_cleaned
