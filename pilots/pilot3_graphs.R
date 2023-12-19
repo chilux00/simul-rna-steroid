@@ -9,11 +9,25 @@ library(forcats)
 library(dplyr)
 
 # Initial read of csv data from Multiquant
-pilot3_data <- read.csv("data/oct22data_DCMdryvols.csv")
-pilot3_data
+pilot3_indiv <- read.csv("data/oct22data_DCMdryvols.csv")
+pilot3_data <- read.csv("data/oct22data_DCMdryvols_averaged.csv")
 
 # Cleaning data types
 pilot3_data_cleaned <- pilot3_data %>%
+  mutate(avg_p4 = as.numeric(avg_p4)) %>% 
+  mutate(avg_f = as.numeric(avg_f)) %>% 
+  mutate(avg_b = as.numeric(avg_b)) %>% 
+  mutate(reagent = as.factor(reagent)) %>%
+  mutate(volume = as.factor(volume)) %>%
+  mutate(time = as.factor(time)) %>%
+  mutate(avg_p4 = coalesce(avg_p4, 0)) %>%  # Removal of NA values - keep?
+  mutate(avg_f = coalesce(avg_f, 0)) %>% 
+  mutate(avg_b = coalesce(avg_b, 0)) %>% 
+  as.data.frame()
+
+pilot3_data_cleaned
+
+pilot3_indiv_cleaned <- pilot3_indiv %>%
   mutate(area_p4 = as.numeric(area_p4)) %>% 
   mutate(area_f = as.numeric(area_f)) %>% 
   mutate(area_b = as.numeric(area_b)) %>% 
@@ -26,7 +40,7 @@ pilot3_data_cleaned <- pilot3_data %>%
   mutate(area_b = coalesce(area_b, 0)) %>% 
   as.data.frame()
 
-pilot3_data_cleaned
+pilot3_indiv_cleaned
 
 # Plotting bar graph of pilot 1 area data per treatment
 # P4 Progesterone graph
