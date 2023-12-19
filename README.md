@@ -1,5 +1,5 @@
 ## A technique for the simultaneous extraction of RNA and steroid data from fresh frozen brain tissue in mice
-Code frameworks and raw data for initial pilots, initial graphing and statistical calculations.
+Code frameworks and raw csv data for pilots, visualizations and stats/post-hoc analyses.
 
 
             
