@@ -141,4 +141,10 @@ pilot2_bar_f <-
 
 pilot2_bar_f
 
+### Creating standard error of the mean column
+std.error <- function(x) sd(x)/sqrt(length(x)) # Define function 
+
+pilot2_avgdata_means <- pilot2_avgdata_cleaned %>%
+  mutate(sem = )
+
 

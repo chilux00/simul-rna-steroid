@@ -7,6 +7,7 @@ library(ggplot2)
 library(cowplot)
 library(forcats)
 library(dplyr)
+set.seed(1234)
 
 # Initial read of csv data from Multiquant
 pilot1_data <- read.csv("data/aug10data_DCMEA.csv")
