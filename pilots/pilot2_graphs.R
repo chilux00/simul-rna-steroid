@@ -7,6 +7,7 @@ library(ggplot2)
 library(cowplot)
 library(forcats)
 library(dplyr)
+set.seed(1234)
 
 # Initial read of data from MultiQuant
 pilot2_indiv <- read.csv("data/sep27data_DCMEA3buffer.csv")
@@ -140,11 +141,4 @@ pilot2_bar_f <-
   )  
 
 pilot2_bar_f
-
-### Creating standard error of the mean column
-std.error <- function(x) sd(x)/sqrt(length(x)) # Define function 
-
-pilot2_avgdata_means <- pilot2_avgdata_cleaned %>%
-  mutate(sem = )
-
 
