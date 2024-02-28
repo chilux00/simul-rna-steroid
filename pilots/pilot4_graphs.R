@@ -75,9 +75,9 @@ pilot4_bar_p4 <-
 pilot4_bar_p4
 
 # B Corticosterone graph
-pilot2_bar_b <- 
+pilot4_bar_b <- 
   ggplot() +
-  geom_bar(data = pilot2_data_cleaned,
+  geom_bar(data = pilot4_data_cleaned,
            aes(x = fct_inorder(buffer),
                y = avg_b,
                fill = reagent),
@@ -86,7 +86,7 @@ pilot2_bar_b <-
            width = 0.7,
            na.rm = TRUE,
   ) +
-  geom_jitter(data = pilot2indiv_cleaned,
+  geom_jitter(data = pilot4indiv_cleaned,
               aes(x = buffer,
                   y = area_b,
                   fill = reagent),
@@ -95,7 +95,7 @@ pilot2_bar_b <-
   
   labs(title = "Pilot 4: 5mL Dichloromethane and Ethyl Acetate extraction of
        Corticosterone (B) Steroid Hormone from Qiagen Lysis Buffers",
-       x = "Buffer Kit",
+       x = "Buffer",
        y = "Area",
        fill = "Reagent"
   ) +
@@ -105,12 +105,12 @@ pilot2_bar_b <-
         axis.text.x = element_text(angle = 80, hjust = 1)
   )  
 
-pilot2_bar_b
+pilot4_bar_b
 
 # F Cortisol graph
-pilot2_bar_f <- 
+pilot4_bar_f <- 
   ggplot() +
-  geom_bar(data = pilot2_data_cleaned,
+  geom_bar(data = pilot4_data_cleaned,
            aes(x = fct_inorder(buffer),
                y = avg_f,
                fill = reagent),
@@ -119,7 +119,7 @@ pilot2_bar_f <-
            width = 0.7,
            na.rm = TRUE,
   ) +
-  geom_jitter(data = pilot2indiv_cleaned,
+  geom_jitter(data = pilot4indiv_cleaned,
               aes(x = buffer,
                   y = area_f,
                   fill = reagent),
@@ -128,8 +128,7 @@ pilot2_bar_f <-
   
   labs(title = "Pilot 4: 5mL Dichloromethane and Ethyl Acetate extraction of
        Cortisol (F) Steroid Hormone from Qiagen Lysis Buffers",
-       x = "Buffer Kit",
-       x = "Buffer Kit",
+       x = "Buffer",
        y = "Area",
        fill = "Reagent"
   ) +
@@ -139,5 +138,5 @@ pilot2_bar_f <-
         axis.text.x = element_text(angle = 80, hjust = 1)
   )  
 
-pilot2_bar_f
+pilot4_bar_f
 
