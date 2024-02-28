@@ -1,0 +1,16 @@
+sample,reagent,buffer,area_p4,area_f,area_b
+1,DCM,Diluted,N/A,N/A,N/A
+2,DCM,Diluted,N/A,N/A,N/A
+3,DCM,Diluted,N/A,N/A,N/A
+4,EA,Diluted,2.54E+04,N/A,N/A
+5,EA,Diluted,3.69E+04,N/A,N/A
+6,EA,Diluted,1.66E+05,N/A,N/A
+7,DCM,None,6.25E+05,6.83E+04,1.32E+05
+8,DCM,None,9.83E+05,1.40E+05,2.69E+05
+9,DCM,None,1.02E+06,1.17E+05,2.72E+05
+10,EA,None,N/A,N/A,N/A
+11,EA,None,N/A,N/A,N/A
+12,EA,None,N/A,N/A,N/A
+13,HEX,N/A,1.24E+06,3.25E+05,1.36E+05
+14,HEX,N/A,1.34E+06,4.08E+05,1.60E+05
+15,HEX,N/A,1.44E+06,4.10E+05,1.56E+05
